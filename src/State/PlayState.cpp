@@ -21,9 +21,16 @@ PlayState::PlayState(StateMachine& machine, sf::RenderWindow& window, Resources&
     m_star_anim.setColor(sf::Color{255, 255, 255, 150});
     m_star_anim.setBounds(window_size);
 
-    m_player.setScale({1.5f, 1.5f});
+    m_player.setScale({window_size.y/400.f, window_size.y/400.f});
+    m_player.setMaxVelocity({window_size.x/576.f, window_size.x/576.f});
     m_player.setBounds(window_size);
     m_player.setPosition({window_size.x/2.f - m_player().getGlobalBounds().width/2.f, window_size.y});
+}
+
+PlayState::~PlayState()
+{
+    for (auto& asteroid : m_asteroids)
+        delete asteroid;
 }
 
 void PlayState::pause()

@@ -13,11 +13,17 @@ public:
     void update(sf::Time delta_time) override;
     sf::FloatRect getGlobalBounds() const;
 
+    sf::Text& text()
+    {
+        return m_text;
+    }
+
     void mouseOver();
     void mouseLeave();
 
     void setFillColor(const sf::Color& color);
     void setOutlineColor(const sf::Color& color);
+    void setOutlineThickness(float thickness);
 
     bool contains(const sf::Vector2f& point);
 
@@ -28,4 +34,5 @@ private:
     sf::Text m_text;
     sf::Color m_fillColor;
     sf::Color m_outlineColor;
+    float     m_outlineThickness;
 };

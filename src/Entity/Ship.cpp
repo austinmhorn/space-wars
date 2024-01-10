@@ -27,6 +27,11 @@ Ship::Ship()
     __init_animations();
 }
 
+Ship::~Ship()
+{
+    
+}
+
 void Ship::setScale(const sf::Vector2f& scale)
 {
     m_scale = scale;
@@ -45,6 +50,11 @@ void Ship::setPosition(const sf::Vector2f& position)
 {
     m_base_sprite.setPosition(position);
     updateSprites();
+}
+
+void Ship::setMaxVelocity(const sf::Vector2f& max_velocity)
+{
+    m_max_velocity = max_velocity;
 }
 
 void Ship::updateCollisions()

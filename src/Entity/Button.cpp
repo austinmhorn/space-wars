@@ -6,6 +6,7 @@
 
 Button::Button(const std::string& text, const Resources& resources, unsigned int fontSize)
     : m_text{ text, resources.Zorque, fontSize }
+    , m_outlineThickness{2.f}
 {
     m_text.setFillColor(sf::Color{ sf::Color::White });
     m_text.setOutlineColor(sf::Color{ sf::Color::Blue });
@@ -23,7 +24,7 @@ sf::FloatRect Button::getGlobalBounds() const
 
 void Button::mouseOver()
 {
-    m_text.setOutlineThickness(2.f);
+    m_text.setOutlineThickness(m_outlineThickness);
 }
 
 void Button::mouseLeave()
@@ -41,6 +42,11 @@ void Button::setOutlineColor(const sf::Color& color)
 {
     m_outlineColor = color;
     m_text.setOutlineColor(m_outlineColor);
+}
+
+void Button::setOutlineThickness(float thickness)
+{
+    m_outlineThickness = thickness;
 }
 
 bool Button::contains(const sf::Vector2f& point)

@@ -16,6 +16,7 @@ class PlayState final : public State
 {
 public:
     PlayState(StateMachine& machine, sf::RenderWindow& window, Resources& resources, const bool replace = true);
+    virtual ~PlayState();
 
     void pause() override;
     void resume() override;

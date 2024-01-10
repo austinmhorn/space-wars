@@ -20,7 +20,7 @@ class Ship
         };
 
         Ship();
-        virtual ~Ship() = default;
+        virtual ~Ship();
 
         sf::Sprite& operator()() 
         {
@@ -31,6 +31,8 @@ class Ship
 
         void setBounds(const sf::Vector2f& bounds);
         void setPosition(const sf::Vector2f& position);
+
+        void setMaxVelocity(const sf::Vector2f& max_velocity);
 
         void updateCollisions();
         void updateMovement(float elapsed);

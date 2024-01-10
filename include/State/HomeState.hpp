@@ -23,6 +23,8 @@ public:
     
 private:
 
+    void __init_buttons(const sf::Vector2f& window_size);
+
     sf::RectangleShape m_background;
     sf::Vector2f       m_current_mouse_position;
 
@@ -30,8 +32,9 @@ private:
     StarAnimation      m_star_anim;
     
     Button m_start;
-    //Button m_inventory;
-    //Button m_upgrades;
+    Button m_inventory;
+    Button m_market;
+    Button m_highscores;
     Button m_controls;
     Button m_options;
     Button m_quit;

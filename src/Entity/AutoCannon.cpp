@@ -15,11 +15,13 @@ AutoCannon::AutoCannon()
 
     m_bullet_texture_sheet = Textures::__load_auto_cannon_bullet_texture_sheet();
     
+    m_bullets_active.reserve( AUTO_CANNON_AMMO_SIZE );
+
     for (std::size_t i = 0; i < AUTO_CANNON_AMMO_SIZE; i++)
     {
         m_bullets_loaded.push_back(new AutoCannon::Bullet{&m_bullet_texture_sheet});
+        m_bullets_active[i] = nullptr;
     }
-
 }
 
 AutoCannon::~AutoCannon()
@@ -27,9 +29,8 @@ AutoCannon::~AutoCannon()
     for (std::size_t i = 0; i < AUTO_CANNON_AMMO_SIZE; i++)
     {
         delete m_bullets_loaded[i];
+        m_bullets_active[i] = nullptr;
     }
-    for (auto& bullet : m_bullets_active)
-        bullet = nullptr;
 }
 
 void AutoCannon::setScale(const sf::Vector2f& scale)
