@@ -63,6 +63,14 @@ void HomeState::__init_buttons(const sf::Vector2f& window_size)
     m_quit.setPosition({ 10.f, m_controls.getGlobalBounds().top + m_controls.getGlobalBounds().height + m_quit.text().getCharacterSize()/10.f });
 
     m_start.setOutlineColor(sf::Color::Green);
+    m_inventory.setFillColor(m_resources.Gray);
+    m_inventory.setOutlineThickness(0.f);
+    m_market.setFillColor(m_resources.Gray);
+    m_market.setOutlineThickness(0.f);
+    m_highscores.setFillColor(m_resources.Gray);
+    m_highscores.setOutlineThickness(0.f);
+    m_controls.setFillColor(m_resources.Gray);
+    m_controls.setOutlineThickness(0.f);
     m_quit.setOutlineColor(sf::Color::Red);
 }
 

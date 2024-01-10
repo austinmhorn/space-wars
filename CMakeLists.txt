@@ -37,6 +37,30 @@ target_include_directories( ${TARGET} PUBLIC $<BUILD_INTERFACE:${INCLUDE_PATH}> 
 
 target_link_libraries( ${TARGET} PRIVATE sfml-graphics sfml-window sfml-system sfml-audio sfml-network ) # ${LEAFY_LIBRARY}
 
+if( WIN32 )
+
+elseif( APPLE )
+    find_library( FOUNDATION_LIBRARY Foundation REQUIRED )
+    find_library( COREGRAPHICS_LIBRARY CoreGraphics REQUIRED )
+
+    target_link_libraries( ${TARGET} PUBLIC ${FOUNDATION_LIBRARY} ${COREGRAPHICS_LIBRARY} )
+    set( SHARE_PATH "${CMAKE_INSTALL_PREFIX}/share/leafy" )
+    set( LIB_PATH "lib" )
+elseif( "${CMAKE_SYSTEM_NAME}" MATCHES "Linux" )
+    find_package( X11 REQUIRED )
+    target_link_libraries( ${TARGET} PUBLIC ${X11_LIBRARIES} )
+    set( SHARE_PATH "${CMAKE_INSTALL_PREFIX}/share/leafy" )
+    
+    if( LIB_SUFFIX )
+        set( LIB_PATH "lib${LIB_SUFFIX}" )
+    else()
+        set( LIB_PATH "lib" )
+    endif()
+else()
+    set( SHARE_PATH "${CMAKE_INSTALL_PREFIX}/share/leafy" )
+    set( LIB_PATH "lib" )    
+endif()
+
 if (WIN32 AND BUILD_SHARED_LIBS)
     add_custom_command(TARGET ${TARGET} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:${TARGET}> $<TARGET_FILE_DIR:${TARGET}> COMMAND_EXPAND_LISTS)

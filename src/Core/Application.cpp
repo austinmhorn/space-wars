@@ -15,6 +15,12 @@ Application::Application(unsigned int               window_width,
 void Application::init()
 {
     m_window.setFramerateLimit( 120 );
+
+    sf::Image logo;
+    if ( !logo.loadFromFile(__filepath_space_wars_logo) )
+        std::cerr << "Failed loading image" << std::endl;
+    
+    m_window.setIcon(logo.getSize().x, logo.getSize().y, logo.getPixelsPtr());
     
     loadResources();
     
