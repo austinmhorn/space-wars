@@ -30,6 +30,9 @@ private:
     StarAnimation      m_star_anim;
     
     Button m_start;
+    //Button m_inventory;
+    //Button m_upgrades;
+    Button m_controls;
     Button m_options;
     Button m_quit;
 };

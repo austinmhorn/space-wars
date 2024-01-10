@@ -11,7 +11,7 @@ set( CMAKE_CXX_EXTENSIONS OFF )
 # Define the path of additional CMake modules
 set( CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules/" )
 
-find_package( SFML 2.5 REQUIRED COMPONENTS graphics window system network audio )
+find_package( SFML 2.5 COMPONENTS graphics window system network audio REQUIRED )
 
 # find_package( leafy REQUIRED )
 

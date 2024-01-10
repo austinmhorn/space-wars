@@ -14,6 +14,11 @@
 
 // Images
 static const std::string __filepath_ship_base_pristine = "assets/png/ship/base/pristine.png";
+static const std::string __filepath_ship_engine = "assets/png/ship/engine/engine.png";
+static const std::string __filepath_ship_engine_effects_texture_sheet = "assets/png/ship/engine/engine-effects.png";
+static const std::string __filepath_auto_cannon_texture_sheet = "assets/png/ship/weapons/auto-cannon.png";
+static const std::string __filepath_auto_cannon_bullet_texture_sheet = "assets/png/ship/weapons/auto-cannon-bullet.png";
+static const std::string __filepath_asteroid_texture_sheet = "assets/png/asteroid/asteroid-explode.png";
 
 // Fonts
 static const std::string __filepath_zorque = "assets/fonts/Zorque.otf";
@@ -59,6 +64,92 @@ namespace Textures
         }
         return texture;
     }
+    
+    static sf::Texture __load_ship_engine_texture() 
+    {
+        static sf::Texture texture;
+        try 
+        {
+            if ( !texture.loadFromFile(__filepath_ship_engine) )
+                throw std::runtime_error("Failed loading texture: ");
+            else
+                std::cout << "Loaded image: " << __filepath_ship_engine << std::endl;
+        }
+        catch(const std::runtime_error &e) 
+        {
+            std::cerr << "std::runtime_error::what(): " << e.what() << __filepath_ship_engine << std::endl;
+        }
+        return texture;
+    }
+
+    static sf::Texture __load_ship_engine_effects_texture_sheet() 
+    {
+        static sf::Texture texture;
+        try 
+        {
+            if ( !texture.loadFromFile(__filepath_ship_engine_effects_texture_sheet) )
+                throw std::runtime_error("Failed loading texture: ");
+            else
+                std::cout << "Loaded image: " << __filepath_ship_engine_effects_texture_sheet << std::endl;
+        }
+        catch(const std::runtime_error &e) 
+        {
+            std::cerr << "std::runtime_error::what(): " << e.what() << __filepath_ship_engine_effects_texture_sheet << std::endl;
+        }
+        return texture;
+    }
+
+    static sf::Texture __load_auto_cannon_texture_sheet() 
+    {
+        static sf::Texture texture;
+        try 
+        {
+            if ( !texture.loadFromFile(__filepath_auto_cannon_texture_sheet) )
+                throw std::runtime_error("Failed loading texture: ");
+            else
+                std::cout << "Loaded image: " << __filepath_auto_cannon_texture_sheet << std::endl;
+        }
+        catch(const std::runtime_error &e) 
+        {
+            std::cerr << "std::runtime_error::what(): " << e.what() << __filepath_auto_cannon_texture_sheet << std::endl;
+        }
+        return texture;
+    }    
+
+    static sf::Texture __load_auto_cannon_bullet_texture_sheet() 
+    {
+        static sf::Texture texture;
+        try 
+        {
+            if ( !texture.loadFromFile(__filepath_auto_cannon_bullet_texture_sheet) )
+                throw std::runtime_error("Failed loading texture: ");
+            else
+                std::cout << "Loaded image: " << __filepath_auto_cannon_bullet_texture_sheet << std::endl;
+        }
+        catch(const std::runtime_error &e) 
+        {
+            std::cerr << "std::runtime_error::what(): " << e.what() << __filepath_auto_cannon_bullet_texture_sheet << std::endl;
+        }
+        return texture;
+    }    
+
+    static sf::Texture __load_asteroid_texture_sheet() 
+    {
+        static sf::Texture texture;
+        try 
+        {
+            if ( !texture.loadFromFile(__filepath_asteroid_texture_sheet) )
+                throw std::runtime_error("Failed loading texture: ");
+            else
+                std::cout << "Loaded image: " << __filepath_asteroid_texture_sheet << std::endl;
+        }
+        catch(const std::runtime_error &e) 
+        {
+            std::cerr << "std::runtime_error::what(): " << e.what() << __filepath_asteroid_texture_sheet << std::endl;
+        }
+        return texture;
+    }    
+
 } // MARK: End of namespace 'Textures'
 
 struct Resources

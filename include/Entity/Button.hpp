@@ -16,6 +16,9 @@ public:
     void mouseOver();
     void mouseLeave();
 
+    void setFillColor(const sf::Color& color);
+    void setOutlineColor(const sf::Color& color);
+
     bool contains(const sf::Vector2f& point);
 
 protected:
@@ -23,4 +26,6 @@ protected:
 
 private:
     sf::Text m_text;
+    sf::Color m_fillColor;
+    sf::Color m_outlineColor;
 };

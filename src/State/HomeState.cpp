@@ -13,6 +13,7 @@ HomeState::HomeState(StateMachine& machine, sf::RenderWindow& window, Resources&
     : State{ machine, window, resources, replace }
     , m_start{ "Start", resources, 30 }
     , m_options{ "Options", resources, 30 }
+    , m_controls{ "Controls", resources, 30 }
     , m_quit{ "Quit", resources, 30 }  
 {
     const auto window_size = sf::Vector2f{ window.getSize() };
@@ -28,10 +29,13 @@ HomeState::HomeState(StateMachine& machine, sf::RenderWindow& window, Resources&
     m_star_anim.setColor(sf::Color{255, 255, 255, 150});
     m_star_anim.setBounds(window_size);
 
-    
     m_start.setPosition({window_size.x/2.f - m_start.getGlobalBounds().width/2.f, window_size.y/2.f - m_start.getGlobalBounds().height - 50.f});
     m_options.setPosition({window_size.x/2.f - m_options.getGlobalBounds().width/2.f, window_size.y/2.f - m_options.getGlobalBounds().height/2.f});
-    m_quit.setPosition({window_size.x/2.f - m_quit.getGlobalBounds().width/2.f, window_size.y/2.f + 50.f});
+    m_controls.setPosition({window_size.x/2.f - m_controls.getGlobalBounds().width/2.f, window_size.y/2.f + 50.f});
+    m_quit.setPosition({window_size.x/2.f - m_quit.getGlobalBounds().width/2.f, m_controls.getGlobalBounds().top + 50.f});
+    
+    m_start.setOutlineColor(sf::Color::Green);
+    m_quit.setOutlineColor(sf::Color::Red);
 }
 
 void HomeState::pause()
@@ -56,8 +60,7 @@ void HomeState::handleEvent()
                 
             case sf::Event::MouseMoved:
                 ///< Get new mouse position
-                m_current_mouse_position = m_window.mapPixelToCoords({ event.mouseMove.x, event.mouseMove.y });
-                                    
+                m_current_mouse_position = m_window.mapPixelToCoords({ event.mouseMove.x, event.mouseMove.y });               
                 break;
                 
             case sf::Event::MouseButtonPressed:
@@ -100,6 +103,7 @@ void HomeState::update()
 
     ( m_start.contains(m_current_mouse_position) ) ? m_start.mouseOver() : m_start.mouseLeave();
     ( m_options.contains(m_current_mouse_position) ) ? m_options.mouseOver() : m_options.mouseLeave();
+    ( m_controls.contains(m_current_mouse_position) ) ? m_controls.mouseOver() : m_controls.mouseLeave();
     ( m_quit.contains(m_current_mouse_position) ) ? m_quit.mouseOver() : m_quit.mouseLeave();
 
     // Update star animation
@@ -111,15 +115,13 @@ void HomeState::draw()
     m_window.clear();
     
     m_window.draw(m_background);
+    m_window.draw(m_star_anim);
 
     m_window.draw(m_title);
 
-    m_window.draw(m_star_anim);
-
     m_window.draw(m_start);
-
     m_window.draw(m_options);
-
+    m_window.draw(m_controls);
     m_window.draw(m_quit);
 
     m_window.display();

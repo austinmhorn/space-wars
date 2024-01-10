@@ -10,6 +10,7 @@
 
 #include "Entity/Button.hpp"
 #include "Entity/Ship.hpp"
+#include "Entity/Asteroid.hpp"
 
 class PlayState final : public State
 {
@@ -29,6 +30,10 @@ private:
 
     StarAnimation      m_star_anim;
     Ship               m_player;
+
+    bool  m_space_key_pressed : 1;
+
+    std::vector<Asteroid*>  m_asteroids;
 };
 
 #endif /* PlayState_hpp */

@@ -14,7 +14,7 @@ Application::Application(unsigned int               window_width,
 
 void Application::init()
 {
-    m_window.setFramerateLimit( 60 );
+    m_window.setFramerateLimit( 120 );
     
     loadResources();
     
