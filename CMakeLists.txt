@@ -11,6 +11,15 @@ set( CMAKE_CXX_EXTENSIONS OFF )
 # Define the path of additional CMake modules
 set( CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules/" )
 
+# Prefer a user-provided SFML_DIR, but fall back to common Homebrew paths on macOS.
+if( APPLE AND NOT SFML_DIR )
+    if( EXISTS "/opt/homebrew/opt/sfml@2/lib/cmake/SFML" )
+        set( SFML_DIR "/opt/homebrew/opt/sfml@2/lib/cmake/SFML" )
+    elseif( EXISTS "/usr/local/opt/sfml@2/lib/cmake/SFML" )
+        set( SFML_DIR "/usr/local/opt/sfml@2/lib/cmake/SFML" )
+    endif()
+endif()
+
 find_package( SFML 2.5 COMPONENTS graphics window system network audio REQUIRED )
 
 # find_package( leafy REQUIRED )
