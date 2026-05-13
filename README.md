@@ -1,4 +1,5 @@
 ![Space-Wars Logo](https://github.com/austinmhorn/space-wars/blob/main/assets/png/logo/space-wars-banner.png)
+[![CI](https://github.com/austinmhorn/space-wars/actions/workflows/ci.yml/badge.svg)](https://github.com/austinmhorn/space-wars/actions/workflows/ci.yml)
 
 ---
 
