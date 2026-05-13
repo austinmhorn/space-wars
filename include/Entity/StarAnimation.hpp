@@ -9,6 +9,7 @@
 
 #include <cmath>
 #include <iostream>
+#include <numbers>
 
 #define _USE_MATH_DEFINES
 
@@ -25,7 +26,7 @@ public:
         for (std::size_t i = 0; i < m_particles.size(); ++i)
         {
             m_shapes[i].setRadius(static_cast<float>(std::rand() % 2 + 1));
-            float angle = 90 * M_PI / 180.f;
+            float angle = 90 * std::numbers::pi / 180.f;
             float speed = (std::rand() % 50) + 50.f;
             m_particles[i].velocity = sf::Vector2f(std::cos(angle) * speed, std::sin(angle) * speed);
         }
@@ -93,7 +94,7 @@ private:
     void resetParticle(std::size_t index)
     {
         // give a random velocity and lifetime to the particle
-        float angle = 90 * M_PI / 180.f;
+        float angle = 90 * std::numbers::pi / 180.f;
         float speed = (std::rand() % 50) + 50.f;
         m_particles[index].velocity = sf::Vector2f(std::cos(angle) * speed, std::sin(angle) * speed);
 
