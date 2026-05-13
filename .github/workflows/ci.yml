@@ -39,6 +39,7 @@ jobs:
             libopenal-dev \
             libflac-dev \
             libvorbis-dev \
+            libfreetype6-dev \
             libgl1-mesa-dev \
             libegl1-mesa-dev \
             libx11-dev
