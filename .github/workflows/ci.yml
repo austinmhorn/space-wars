@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - name: Checkout Space Wars
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install Linux dependencies
         if: runner.os == 'Linux'
@@ -45,7 +45,7 @@ jobs:
             libx11-dev
 
       - name: Checkout SFML 2.6.x
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: SFML/SFML
           ref: 2.6.x
