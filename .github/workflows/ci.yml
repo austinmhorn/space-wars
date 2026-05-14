@@ -1,6 +1,7 @@
 name: Build Space Wars
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
@@ -52,7 +53,15 @@ jobs:
           path: SFML
           fetch-depth: 0
 
+      - name: Cache SFML
+        uses: actions/cache@v4
+        id: sfml-cache
+        with:
+          path: SFML/install
+          key: ${{ runner.os }}-${{ matrix.platform.name }}-${{ matrix.config.name }}-sfml-2.6.x
+
       - name: Configure SFML
+        if: steps.sfml-cache.outputs.cache-hit != 'true'
         shell: bash
         run: |
           cmake -S "$GITHUB_WORKSPACE/SFML" \
@@ -63,6 +72,7 @@ jobs:
                 ${{ matrix.config.flags }}
 
       - name: Build SFML
+        if: steps.sfml-cache.outputs.cache-hit != 'true'
         shell: bash
         run: |
           cmake --build "$GITHUB_WORKSPACE/SFML/build" \
